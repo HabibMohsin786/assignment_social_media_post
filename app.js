@@ -43,9 +43,16 @@ window.addPostData = function () {
         profileName: inpProfileName.value,
         postUrl: inpPostUrl.value,
     };
-    
-    var referance = ref(db, `Post/`);
-    push(referance, obj);
+
+    // direct push method
+    // var referance = ref(db, `Post/`);
+    // push(referance, obj);
+
+    // get id from firebase
+    obj.id= push(ref(db, `Post`)).key;
+
+    var referance = ref(db, `Post/${obj.id}`);
+    set(referance, obj);
 }
 
 function getData() {
@@ -62,9 +69,9 @@ function getData() {
         <div class="container border border-1 rounded my-4 crdMain">
         <div class="m-0 p-0">
 
-        <nav class="navbar navbar-expand-lg bg-body-light">
+        <nav class="navbar navbar-expand-lg bg-body-light ">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img class="rounded-circle" width="60px" height="60px"
+                <a class="navbar-brand p-0" href="#"><img class="rounded-circle" width="60px" height="60px"
                         src="${arr[i].profileURL}"
                         alt=""></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -75,15 +82,15 @@ function getData() {
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                         <il class="nav-item">
-                            <a class="nav-link fw-bold" aria-current="page" href="#">${arr[i].profileName}</a>
+                            <a class="nav-link fw-bold p-0" aria-current="page" href="#">${arr[i].profileName}</a>
                             </li>
                             <il class="nav-item">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                                     <li class="nav-item">
-                                        <a class="nav-link fs-6" href="#">2 hours ago.</a>
+                                        <a class="nav-link fs-6 p-0" href="#">2 hours ago.</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link fs-6" href="#"><i class="fa-solid fa-user-group"></i></a>
+                                    <li class="nav-item p-0">
+                                        <a class="nav-link fs-6 p-0" href="#"><i class="fa-solid fa-user-group"></i></a>
                                     </li>
                                 </ul>
                             </il>
@@ -92,9 +99,9 @@ function getData() {
                     </ul>
                     <form class="d-flex " role="search">
 
-                        <button class="btn btn me-3 fs-3" type="submit"><i
+                        <button class="btn btn me-4 fs-3 p-0" type="submit"><i
                                 class="fa-solid fa-ellipsis"></i></button>
-                        <button class="btn fs-3" type="submit"><i class="fa-solid fa-xmark"></i></button>
+                        <button onclick="removeList()" class="btn fs-3 p-0" type="submit"><i class="fa-solid fa-xmark"></i></button>
                     </form>
                 </div>
             </div>
@@ -116,6 +123,7 @@ function getData() {
 }
 getData();
 
+console.log(perantPostCard);
 window.removeList = function 
 (post) {
  const referance = ref(db, `post/${id}`);
