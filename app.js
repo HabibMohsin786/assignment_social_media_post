@@ -43,6 +43,7 @@ window.addPostData = function () {
         profileName: inpProfileName.value,
         postUrl: inpPostUrl.value,
     };
+    
     var referance = ref(db, `Post/`);
     push(referance, obj);
 }
@@ -52,12 +53,14 @@ function getData() {
     onValue(referance, function (allposts) {
         allPostsData = allposts.val();
         // console.log(allPostsData);
-     var arr = Object.values(allPostsData);
-     console.log(arr);
+        var arr = Object.values(allPostsData);
+        console.log(arr);
 
-     perantPostCard.innerHTML = '';
-     for (let i = 0; i < arr.length; i++) {
-        perantPostCard.innerHTML += `<div class="m-0 p-0">
+        perantPostCard.innerHTML = '';
+        for (let i = 0; i < arr.length; i++) {
+            perantPostCard.innerHTML += `
+        <div class="container border border-1 rounded my-4 crdMain">
+        <div class="m-0 p-0">
 
         <nav class="navbar navbar-expand-lg bg-body-light">
             <div class="container-fluid">
@@ -105,9 +108,16 @@ function getData() {
     <div class="d-flex justify-content-around my-2">
         <button type="button" class="btn btn-light fw-bold"><i class="fa-solid fa-thumbs-up"></i><span class="ms-2">Like</span></button><button type="button"
             class="btn btn-light fw-bold"><i class="fa-regular fa-comment"></i><span class="ms-2">Comment</span></button><button type="button" class="btn btn-light fw-bold"><i class="fa-solid fa-share"></i><span class="ms-2">Shear</span></button>
+    </div>
     </div>`
-        
-     }   
+
+        }
     })
 }
 getData();
+
+window.removeList = function 
+(post) {
+ const referance = ref(db, `post/${id}`);
+ remove(referance);   
+}
