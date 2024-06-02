@@ -13,22 +13,22 @@
 </head>
 
 <body>
-  <h1 class="text-center mt-4">
-    <i><u>Post Detail</u></i>
+  <h1 class="bg-info text-white py-5">
+    <i class="ms-5"><u>Post Detail</u></i>
   </h1>
   <div class="container mt-5">
     <div class="input-group my-3">
       <span class="input-group-text">Profile Image Url and Profile Name</span>
-      <input type="text" aria-label="First name" class="form-control" id="inpProfileUrl" />
-      <input type="text" aria-label="Last name" class="form-control" id="inpProfileName" />
+      <input type="text" aria-label="First name" class="form-control" id="inpProfileUrl" placeholder="Input Profile Url"/>
+      <input type="text" aria-label="Last name" class="form-control" id="inpProfileName" placeholder="Input Profile Name"/>
     </div>
     <div class="input-group mb-3">
       <span class="input-group-text" id="inputGroup-sizing-default">Post Url</span>
       <input type="text" class="form-control" aria-label="Sizing example input"
-        aria-describedby="inputGroup-sizing-default" id="inpPostUrl" />
+        aria-describedby="inputGroup-sizing-default" id="inpPostUrl" placeholder="Input Post Url"/>
     </div>
-    <button onclick="addPostData()" type="button" class="btn btn-outline-secondary">Shear Post</button> <a
-      class="btn btn-outline-secondary" href="allPost.html" role="button">See All Posts</a>
+    <button onclick="addPostData()" type="button" class="btn btn-outline-secondary">Share Post</button> <a
+      class="btn btn-outline-secondary" href="pages/allPost.html" role="button">See All Posts</a>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
