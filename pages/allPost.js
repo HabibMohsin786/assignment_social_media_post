@@ -7,6 +7,7 @@ import {
   ref,
   getDatabase,
   onValue,
+  remove,
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -34,7 +35,7 @@ var perantPostCard = document.getElementById("perantPostCard");
 var allPostsData;
 
 window.delPost = function (id) {
-    const referance = ref(db, `post/${id}`);
+    const referance = ref(db, `Post/${id}`);
     remove(referance);
     console.log(id);
   };
@@ -85,7 +86,7 @@ window.delPost = function (id) {
   
                           <button class="btn btn me-4 fs-3 p-0" type="submit"><i
                                   class="fa-solid fa-ellipsis"></i></button>
-                          <button onclick="delPost(${arr.id})" class="btn fs-3 p-0" type="submit"><i class="fa-solid fa-xmark"></i></button>
+                          <button onclick="delPost(${arr[i].id})" class="btn fs-3 p-0" type="submit"><i class="fa-solid fa-xmark"></i></button>
                       </form>
                   </div>
               </div>
