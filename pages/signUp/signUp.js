@@ -47,10 +47,13 @@ window.signUp = function () {
     password : password.value,
   };
 createUserWithEmailAndPassword(auth, obj.email, obj.password)
-.than(function (res) {
-  console.log(res);
+.then(function(res){
+  console.log(res)
+  obj.id = res.user.uid;
+  var refrance = ref(db, `users/${obj.id}`);
+set(refrance, obj);
 })
 .catch(function(err) {
-  console.log(err);
+  console.log(err.message)
 })
 }

@@ -44,14 +44,19 @@ window.signIn = function () {
 var obj ={
   email : email.value,
   password : password.value,
-}  
+};  
 
 signInWithEmailAndPassword(auth, obj.email, obj.password)
-.than(function (res) {
-  console.log(res, "Login sucesfuly");
+.then(function (res) {
+  console.log(res);
+  var id = res.user.uid;
+  var referance =ref(db, `users/${id}`);
+  onValue(referance, function (data) {
+    console.log(data.val());
+  })
 })
 .catch(function (err) {
-  console.log(err);
+  console.log(err.message);
 })
 
 }
